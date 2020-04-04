@@ -1,0 +1,46 @@
+<br>
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Enter City"
+   #city="ngModel" (keyup.enter)="getWeather(city.value)"
+[(ngModel)]="title" name="title" >
+  <div class="input-group-append">
+    <button class="btn btn-primary" type="button" (click)="getWeather(city.value)" (keyup)="getWeather(city.value)">Get Weather Details</button>
+  </div>
+</div>
+<br>
+
+<div *ngIf="!forcast">
+  <br>
+  <br>
+  <br>
+  <h1 style="color:white;font-size: 80px; margin-left:100px;">Enter your favourate city</h1>
+</div>
+
+<div *ngIf="forcast" class="card" style="">
+  <div>
+    <div class="card-body"[style.background-color]="forcast.weather[0].main === 'Clear' ? '#4fbcff' : '#939393' " style="height:300px;">
+      <h3 class="card-title">{{ forcast.name}}-{{forcast.sys.country}}</h3>
+      <p class="card-text">
+        <b>{{ forcast.weather[0].description }}</b>
+      </p>
+      <h1 style="padding-left:470px;">{{ forcast.main.temp | toCelciusTemp | number: '2.1-2'}}
+        <sup> . </sup>c</h1>
+      <p style="padding-left:930px;padding-top:70px;">
+        <b>Longitude :</b>
+        {{forcast.coord.lon}}</p>
+      <p style="padding-left:930px;">
+        <b>Latitude : </b>
+        {{forcast.coord.lat}}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <b>PRESSURE :</b>
+        {{ forcast.main.pressure}} pascal</li>
+      <li class="list-group-item">
+        <b>HUMIDITY: </b>{{ forcast.main.humidity}} RH</li>
+      <li class="list-group-item">
+        <b>WIND SPEED :</b>
+        {{ forcast.wind.speed}} MPS</li>
+    </ul>
+  </div>
+</div>
