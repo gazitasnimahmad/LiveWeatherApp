@@ -13,7 +13,7 @@
   <br>
   <br>
   <br>
-  <h1 style="color:white;font-size: 80px; margin-left:100px;">Enter your favourate city</h1>
+  <h1 class="comment1">Enter your favourate city</h1>
 </div>
 
 <div *ngIf="forcast" class="card" style="">
@@ -23,12 +23,12 @@
       <p class="card-text">
         <b>{{ forcast.weather[0].description }}</b>
       </p>
-      <h1 style="padding-left:470px;">{{ forcast.main.temp | toCelciusTemp | number: '2.1-2'}}
+      <h1  class="temperature1">{{ forcast.main.temp | toCelciusTemp | number: '2.1-2'}}
         <sup> . </sup>c</h1>
-      <p style="padding-left:930px;padding-top:70px;">
+      <p class="longitude1">
         <b>Longitude :</b>
         {{forcast.coord.lon}}</p>
-      <p style="padding-left:930px;">
+      <p  class="latitude1">
         <b>Latitude : </b>
         {{forcast.coord.lat}}</p>
     </div>
